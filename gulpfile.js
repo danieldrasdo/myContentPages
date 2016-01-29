@@ -9,6 +9,7 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync'),
     inlinesource = require('gulp-inline-source'),
     htmlreplace = require('gulp-html-replace'),
+    replace = require('gulp-replace'),
     reload = browserSync.reload;
 
 //Log Errors
@@ -57,6 +58,7 @@ gulp.task('html', function() {
     .pipe(htmlreplace({
         'production': ''
     }))
+    .pipe(replace('http://www.brighton.com/', '{url}'))
     .pipe(gulp.dest('./production'));
 });
 
